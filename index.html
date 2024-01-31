@@ -23,7 +23,7 @@
       if (jsonDataString) {
         try {
           // JSONデータをオブジェクトにパースして表示
-          const jsonData = JSON.parse(decodeURIComponent(jsonDataString));
+          const jsonData = decodeURIComponent(jsonDataString);
           console.log('受け取ったJSONデータ:', jsonData);
         } catch (error) {
           console.error('JSONデータのパースエラー:', error);
