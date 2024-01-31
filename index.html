@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSONデータを取得するページ</title>
+</head>
+<body>
+
+  <script>
+    // URLからクエリパラメーターを取得する関数
+    function getQueryParameter(key) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(key);
+    }
+
+    // ページロード時に実行される処理
+    window.onload = function() {
+      // クエリパラメーターから"data"を取得
+      const jsonDataString = getQueryParameter('data');
+
+      if (jsonDataString) {
+        try {
+          // JSONデータをオブジェクトにパースして表示
+          const jsonData = JSON.parse(decodeURIComponent(jsonDataString));
+          console.log('受け取ったJSONデータ:', jsonData);
+        } catch (error) {
+          console.error('JSONデータのパースエラー:', error);
+        }
+      } else {
+        console.log('データがありません。');
+      }
+    };
+  </script>
+
+</body>
+</html>
